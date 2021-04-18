@@ -6,6 +6,13 @@ The dungeon is generated utilizing a script called PathMaker. This randomizes th
 
 ![Screen-Example-1](https://github.com/pigghead/A-star/blob/main/screen-caps/Cap-1.PNG)
 
+## On the left
+Green Circle: Spawn points for path start
+
+Red Circle: Spawn points for path end
+
+Blue Circle: Spawn points for obstacles
+
 Here are a few examples of simple dungeons created by the randomizer
 
 ![Dungeon-Example-1](https://github.com/pigghead/A-star/blob/main/screen-caps/EXAMPLE_Cap1.PNG)
