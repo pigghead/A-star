@@ -5,10 +5,16 @@ using UnityEngine;
 public class GridTesting : MonoBehaviour
 {
     Camera cam;
+    private Grid grid;
 
     void Start()
     {
         cam = Camera.main;
-        Grid grid = new Grid(4, 4, 1f);
+        grid = new Grid(4, 4, 1f);
+    }
+
+    public void ToggleDebugDraw()
+    {
+        grid.ToggleDebugDraw();
     }
 }
