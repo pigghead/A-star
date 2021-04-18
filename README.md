@@ -1,6 +1,8 @@
 # A-star
 An interesting GUI application of the A-star pathfinding algorithm. Just for fun.
 
+[Github.io example of the project](https://pigghead.github.io/A-star/)
+
 # Dungeon Generation
 The dungeon is generated utilizing a script called PathMaker. This randomizes the start position, the goal, as well as some obstacles. 
 
