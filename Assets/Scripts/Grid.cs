@@ -51,19 +51,8 @@ public class Grid
         grid[x, y] = targetValue;
     }
 
-    public void ToggleDebugDraw()
+    public void DebugDraw()
     {
-        if (debugDrawEnabled)
-        {
-            debugDrawEnabled = false;
-            debugDrawTime = 0f;
-        }
-        else
-        {
-            debugDrawEnabled = true;
-            debugDrawTime = 1000.0f;
-        }
-
         for (int x = 0; x < grid.GetLength(0); x++)
         {
             for (int y = 0; y < grid.GetLength(1); y++)
