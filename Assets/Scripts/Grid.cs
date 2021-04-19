@@ -14,6 +14,7 @@ public class Grid
 
     private float debugDrawTime;
 
+    // ctor defining the # of cells in x and y (width, height) and cellSize in float
     public Grid(int width, int height, float cellSize)
     {
         this.width = width;
@@ -29,34 +30,42 @@ public class Grid
             for (int y = 0; y < grid.GetLength(1); y++)
             {
                 CreateWorldText(grid[x,y].ToString(), GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, null, 12);
-                //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.black, 1000.0f);
             }
         }
-
-        // Debug line along the top edge and the right edge
-        //Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 1000.0f);
-        //Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 1000.0f);
     }
 
-    // multiple a given x and y coordinate with cell size to make a cell
+    /// <summary>
+    /// Get a specific position in the world with respect to cell size
+    /// </summary>
+    /// <param name="x">x or width location of world position</param>
+    /// <param name="y">y or height location of world position</param>
+    /// <returns>Vector3 of (x, y, 0)</returns>
     private Vector3 GetWorldPosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize;
     }
 
-    // Set values within a specific grid
+    /// <summary>
+    /// Set values within a specific cell in the grid
+    /// </summary>
+    /// <param name="x">The x value in grid[x,y]</param>
+    /// <param name="y">The y value in grid[x,y]</param>
+    /// <param name="targetValue">Value to set in our targeted cell</param>
     public void SetValue(int x, int y, int targetValue)
     {
         grid[x, y] = targetValue;
     }
 
+    /// <summary>
+    /// Allow us to toggle the lines to see the grid on screen
+    /// </summary>
     public void DebugDraw()
     {
         for (int x = 0; x < grid.GetLength(0); x++)
         {
             for (int y = 0; y < grid.GetLength(1); y++)
             {
+                // Debug draw all lines aside from the upper width and right most height
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.black, debugDrawTime);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.black, debugDrawTime);
             }
@@ -67,7 +76,15 @@ public class Grid
         Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, debugDrawTime);
     }
 
-    // Helper method for creating text in the world
+    /// <summary>
+    /// Allow us to create text in the world, on the fly
+    /// </summary>
+    /// <param name="text">What the text will say</param>
+    /// <param name="localPos">Where the text will be created</param>
+    /// <param name="parent">The TextMesh's parent in the hierarchy</param>
+    /// <param name="fontSize">Size of the text</param>
+    /// <param name="characterSize">Size of each character</param>
+    /// <returns>TextMesh object</returns>
     private TextMesh CreateWorldText(string text, Vector3 localPos, Transform parent, int fontSize, float characterSize = 0.14f)
     {
         GameObject g = new GameObject("Grid_Cell", typeof(TextMesh));
